@@ -9,7 +9,13 @@
       "program": "${workspaceFolder}/backend/main.go",
       "cwd": "${workspaceFolder}/backend",
       "env": {
-        "LOG_LEVEL": "info"
+    "LOG_LEVEL": "info",
+    "DB_HOST": "localhost",
+    "DB_PORT": "5432",
+    "DB_USER": "postgres",
+    "DB_PASSWORD": "postgres",
+    "DB_NAME": "statuspage",
+    "DB_SSLMODE": "disable"
       }
     }
   ]

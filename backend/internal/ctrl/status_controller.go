@@ -27,7 +27,13 @@ func (c *StatusController) RegisterRoutes(r chi.Router) {
 // GetHealth returns service health.
 func (c *StatusController) GetHealth(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
-	if err := json.NewEncoder(w).Encode(c.statusService.GetHealth()); err != nil {
+
+	health, healthErr := c.statusService.GetHealth(r.Context())
+	if healthErr != nil {
+		w.WriteHeader(http.StatusServiceUnavailable)
+	}
+
+	if err := json.NewEncoder(w).Encode(health); err != nil {
 		http.Error(w, "failed to write response", http.StatusInternalServerError)
 		return
 	}

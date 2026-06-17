@@ -1,0 +1,7 @@
+CREATE TABLE IF NOT EXISTS health (
+    id BIGSERIAL PRIMARY KEY,
+    status VARCHAR(32) NOT NULL,
+    service VARCHAR(255) NOT NULL,
+    version VARCHAR(64) NOT NULL,
+    created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
